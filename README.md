@@ -1,0 +1,3 @@
+# OWSAP_NETWORK_SCAN
+USED TOOLS: nmap,sslyze
+INTRIGATION TOOL: jenkins
