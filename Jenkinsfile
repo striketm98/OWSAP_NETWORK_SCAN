@@ -54,7 +54,7 @@ pipeline{
                         echo "report name change"
                         sh '''
                         sudo mv nmap_report.txt nmap_report_$(date +"%m_%d_%Y_%H:%M").txt
-                        sudo mv sslyze_report.txt nmap_report_$(date +"%m_%d_%Y_%H:%M").txt
+                        sudo mv sslyze_report.txt sslyze_report_$(date +"%m_%d_%Y_%H:%M").txt
                         '''
                     }
                     }
