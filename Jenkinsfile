@@ -33,7 +33,7 @@ pipeline{
                     if(scan_tool=="nmap"){
                           echo "nmap scan commited"
                         sh """
-                        sudo nmap -v --script http-slowloris-check $target -oN nmap_report.txt
+                        sudo nmap -v  --script http-slowloris-check $target -oN nmap_report.txt
                         """
                         echo "report name change"
                         sh 'sudo mv nmap_report.txt nmap_report_$(date +"%m_%d_%Y_%H:%M").txt'     
@@ -61,8 +61,19 @@ pipeline{
                 }
             }
         }
+        post {
+             always {
+                 echo "Removing unkown files and complete the scan"
+                 sh '''
+                    sudo rm Jenkinsfile
+                 '''
+                
+             }
+        }
 
     }
 
+    
+    
     
     
