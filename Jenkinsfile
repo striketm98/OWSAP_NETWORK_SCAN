@@ -65,7 +65,7 @@ pipeline{
              always {
                  echo "Removing unkown files and complete the scan"
                  sh '''
-                    sudo rm Jenkinsfile
+                    sudo rm Jenkinsfile README.md
                  '''
                 
              }
