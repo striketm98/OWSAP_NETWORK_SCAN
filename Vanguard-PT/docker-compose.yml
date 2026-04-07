@@ -1,0 +1,27 @@
+version: '1.0'
+
+services:
+  # Management GUI (LAMP Stack)
+  vanguard-gui:
+    build: ./gui
+    ports:
+      - "8088:80"
+    volumes:
+      - ./gui:/var/www/html
+      - /var/run/docker.sock:/var/run/docker.sock # Allows GUI to trigger Engine
+    networks:
+      - pt-network
+
+  # Security Engine (Toolbox)
+  vanguard-engine:
+    build: ./engine
+    tty: true
+    stdin_open: true
+    networks:
+      - pt-network
+
+networks:
+  pt-network:
+    driver: bridge
+
+    
