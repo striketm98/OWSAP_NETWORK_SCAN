@@ -1,20 +1,24 @@
-version: '1.0'
+version: '3.8'
 
 services:
   # Management GUI (LAMP Stack)
   vanguard-gui:
     build: ./gui
+    container_name: vanguard-gui
     ports:
       - "8088:80"
     volumes:
       - ./gui:/var/www/html
       - /var/run/docker.sock:/var/run/docker.sock # Allows GUI to trigger Engine
+    depends_on:
+      - vanguard-engine
     networks:
       - pt-network
 
   # Security Engine (Toolbox)
   vanguard-engine:
     build: ./engine
+    container_name: vanguard-engine
     tty: true
     stdin_open: true
     networks:
